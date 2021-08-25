@@ -541,8 +541,7 @@ function getNodeClusteringCoefficient(knode) {
   var triangleCount = getTriangleCount(knode);
   var neighbourCount = getNeighbourCount(knode);
 
-  var clustcoeff =
-    (2.0 * triangleCount) / (neighbourCount * (neighbourCount - 1));
+  var clustcoeff = (triangleCount == 0) ? 0 : (2.0 * triangleCount) / (neighbourCount * (neighbourCount - 1));
 
   return clustcoeff;
 }
@@ -592,15 +591,15 @@ function getlocalNodeEfficiency(i) {
 
       var reldist_ijk = getRelativeDistance(i, j)[k]; // Same as getRelativeDistance(i, k)[j]
 
-      console.log(
-        "Relative Distance " + str(j) + " " + str(k) + " = " + str(reldist_ijk)
-      );
+      //console.log(
+      //  "Relative Distance " + str(j) + " " + str(k) + " = " + str(reldist_ijk)
+      //);
 
       r = adota == 0 ? 0 : adota * (1.0 / reldist_ijk);
 
       result = result + r;
 
-      console.log("R = " + str(r));
+      //console.log("R = " + str(r));
     }
   }
   var denominator = getNeighbourCount(i);
