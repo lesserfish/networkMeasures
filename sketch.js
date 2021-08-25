@@ -50,7 +50,7 @@ function setup() {
   button.mouseOut(enableNode);
 
   rbutton = createButton("Reset");
-  rbutton.position(windowWidth - 80, 30);
+  rbutton.position(windowWidth - 110, 30);
   rbutton.mousePressed(reset);
   rbutton.mouseOver(disableNode);
   rbutton.mouseOut(enableNode);
