@@ -50,7 +50,7 @@ function setup() {
   button.mouseOut(enableNode);
 
   rbutton = createButton("Reset");
-  rbutton.position(windowWidth - 110, 30);
+  rbutton.position(windowWidth - 80, 30);
   rbutton.mousePressed(reset);
   rbutton.mouseOver(disableNode);
   rbutton.mouseOut(enableNode);
@@ -410,7 +410,7 @@ function getRelativeDistance(centerNode, nodea) {
             if (visitedNodes.indexOf(new_node) == -1) {
               var relative_array_pos = centerNode * matrixLen + new_node;
 
-              if (matrix[relative_array_pos] == 1) {
+              if (matrix[relative_array_pos] == 1 || centerNode == new_node) {
                 nextVisit.push(new_node);
               }
             }
@@ -541,7 +541,10 @@ function getNodeClusteringCoefficient(knode) {
   var triangleCount = getTriangleCount(knode);
   var neighbourCount = getNeighbourCount(knode);
 
-  var clustcoeff = (triangleCount == 0) ? 0 : (2.0 * triangleCount) / (neighbourCount * (neighbourCount - 1));
+  var clustcoeff =
+    triangleCount == 0
+      ? 0
+      : (2.0 * triangleCount) / (neighbourCount * (neighbourCount - 1));
 
   return clustcoeff;
 }
